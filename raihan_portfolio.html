@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muhammad Raihan Alghifari | Portfolio</title>
+  <meta name="description" content="Premium portfolio website for Muhammad Raihan Alghifari, Information Systems student focused on system development, backend engineering, and business-driven digital solutions." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+          },
+          colors: {
+            base: '#020617',
+            panel: '#0f172a',
+            line: 'rgba(148,163,184,0.18)'
+          },
+          boxShadow: {
+            glow: '0 0 0 1px rgba(56,189,248,0.14), 0 18px 60px rgba(2,132,199,0.18)',
+            soft: '0 16px 40px rgba(15, 23, 42, 0.45)'
+          },
+          backgroundImage: {
+            'hero-grid': 'linear-gradient(rgba(148,163,184,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,0.08) 1px, transparent 1px)',
+            'accent-radial': 'radial-gradient(circle at center, rgba(56,189,248,0.28), rgba(14,165,233,0.1), transparent 68%)'
+          },
+          animation: {
+            floaty: 'floaty 7s ease-in-out infinite',
+            pulseLine: 'pulseLine 4s ease-in-out infinite',
+            fadeUp: 'fadeUp 0.8s ease forwards'
+          },
+          keyframes: {
+            floaty: {
+              '0%,100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-12px)' }
+            },
+            pulseLine: {
+              '0%,100%': { opacity: '0.45' },
+              '50%': { opacity: '1' }
+            },
+            fadeUp: {
+              '0%': { opacity: '0', transform: 'translateY(18px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+    body {
+      background:
+        radial-gradient(circle at top left, rgba(14,165,233,0.16), transparent 32%),
+        radial-gradient(circle at top right, rgba(59,130,246,0.12), transparent 28%),
+        linear-gradient(180deg, #020617 0%, #0b1120 48%, #020617 100%);
+      overflow-x: hidden;
+    }
+    .glass {
+      background: linear-gradient(180deg, rgba(15,23,42,0.78), rgba(15,23,42,0.58));
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(148,163,184,0.14);
+    }
+    .section-reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .section-reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .nav-link.active {
+      color: white;
+      background: linear-gradient(90deg, rgba(56,189,248,0.18), rgba(59,130,246,0.08));
+      border-color: rgba(56,189,248,0.28);
+    }
+    .project-card:hover .project-arrow {
+      transform: translateX(4px);
+    }
+    .noise::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.03;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle at 20% 20%, white 0.8px, transparent 1px),
+        radial-gradient(circle at 80% 40%, white 0.8px, transparent 1px),
+        radial-gradient(circle at 40% 80%, white 0.8px, transparent 1px);
+      background-size: 180px 180px;
+    }
+    .timeline-line {
+      background: linear-gradient(180deg, rgba(56,189,248,0.1), rgba(56,189,248,0.55), rgba(56,189,248,0.08));
+    }
+    .modal-visible {
+      opacity: 1 !important;
+      pointer-events: auto !important;
+    }
+    .modal-card-visible {
+      transform: translateY(0) scale(1) !important;
+      opacity: 1 !important;
+    }
+    .tag-pill {
+      border: 1px solid rgba(56,189,248,0.16);
+      background: rgba(8, 47, 73, 0.36);
+    }
+    .grid-bg {
+      background-size: 44px 44px;
+      mask-image: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0));
+    }
+  </style>
+</head>
+<body class="font-sans text-slate-200 selection:bg-cyan-400/20 selection:text-white">
+  <div class="fixed inset-0 -z-10 overflow-hidden">
+    <div id="parallaxGlowOne" class="absolute -top-20 left-[-8rem] h-72 w-72 rounded-full bg-cyan-400/18 blur-3xl"></div>
+    <div id="parallaxGlowTwo" class="absolute top-[30%] right-[-6rem] h-80 w-80 rounded-full bg-blue-500/15 blur-3xl"></div>
+    <div class="absolute inset-0 bg-hero-grid grid-bg opacity-25"></div>
+  </div>
+
+  <header class="sticky top-0 z-40 border-b border-white/5 bg-slate-950/55 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+      <a href="#home" class="flex items-center gap-3 text-sm font-semibold tracking-[0.22em] text-slate-200 uppercase">
+        <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-cyan-400/25 bg-cyan-400/10 text-cyan-300 shadow-glow">MR</span>
+        <span class="hidden sm:inline">Muhammad Raihan</span>
+      </a>
+      <nav class="hidden items-center gap-2 md:flex">
+        <a class="nav-link rounded-full border border-transparent px-4 py-2 text-sm text-slate-300 transition hover:border-cyan-400/20 hover:text-white" href="#about">About</a>
+        <a class="nav-link rounded-full border border-transparent px-4 py-2 text-sm text-slate-300 transition hover:border-cyan-400/20 hover:text-white" href="#stack">Stack</a>
+        <a class="nav-link rounded-full border border-transparent px-4 py-2 text-sm text-slate-300 transition hover:border-cyan-400/20 hover:text-white" href="#projects">Projects</a>
+        <a class="nav-link rounded-full border border-transparent px-4 py-2 text-sm text-slate-300 transition hover:border-cyan-400/20 hover:text-white" href="#experience">Experience</a>
+        <a class="nav-link rounded-full border border-transparent px-4 py-2 text-sm text-slate-300 transition hover:border-cyan-400/20 hover:text-white" href="#contact">Contact</a>
+      </nav>
+      <button id="mobileToggle" class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-200 md:hidden" aria-label="Open menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6h16M4 12h16M4 18h16" /></svg>
+      </button>
+    </div>
+    <div id="mobileMenu" class="hidden border-t border-white/5 bg-slate-950/90 px-4 py-3 md:hidden">
+      <div class="flex flex-col gap-2">
+        <a class="rounded-xl px-3 py-2 text-sm text-slate-300 transition hover:bg-white/5 hover:text-white" href="#about">About</a>
+        <a class="rounded-xl px-3 py-2 text-sm text-slate-300 transition hover:bg-white/5 hover:text-white" href="#stack">Stack</a>
+        <a class="rounded-xl px-3 py-2 text-sm text-slate-300 transition hover:bg-white/5 hover:text-white" href="#projects">Projects</a>
+        <a class="rounded-xl px-3 py-2 text-sm text-slate-300 transition hover:bg-white/5 hover:text-white" href="#experience">Experience</a>
+        <a class="rounded-xl px-3 py-2 text-sm text-slate-300 transition hover:bg-white/5 hover:text-white" href="#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="relative overflow-hidden">
+      <div class="noise absolute inset-0"></div>
+      <div class="mx-auto grid min-h-[92vh] max-w-7xl items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:px-8 lg:py-28">
+        <div class="section-reveal show">
+          <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-400/18 bg-cyan-400/8 px-4 py-2 text-xs font-medium uppercase tracking-[0.22em] text-cyan-300">
+            Final-year Information Systems Student • Backend-Oriented System Builder
+          </div>
+          <h1 class="max-w-4xl text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-6xl">
+            Muhammad Raihan Alghifari
+          </h1>
+          <p class="mt-4 max-w-3xl text-lg font-medium text-slate-300 sm:text-xl">
+            System Builder &amp; Business-Oriented Web Developer
+          </p>
+          <div class="mt-4 flex flex-wrap items-center gap-3 text-base text-slate-400 sm:text-lg">
+            <span class="text-slate-500">I build systems around</span>
+            <span id="typingText" class="min-w-[12rem] font-semibold text-cyan-300"></span>
+            <span class="inline-block h-6 w-px animate-pulse bg-cyan-300/70"></span>
+          </div>
+          <p class="mt-8 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
+            Designing scalable digital workflows by translating operational complexity in healthcare, government, campus, and business environments into structured systems that are easier to manage, monitor, and improve.
+          </p>
+
+          <div class="mt-10 flex flex-wrap gap-4">
+            <a href="#projects" class="group inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-500 px-6 py-3.5 font-semibold text-slate-950 transition hover:scale-[1.02] hover:shadow-glow">
+              Explore My Work
+              <span class="transition group-hover:translate-x-1">→</span>
+            </a>
+            <a href="#contact" class="inline-flex items-center gap-2 rounded-2xl border border-white/12 bg-white/5 px-6 py-3.5 font-semibold text-white transition hover:border-cyan-400/30 hover:bg-cyan-400/8">
+              Let&apos;s Connect
+            </a>
+          </div>
+
+          <div class="mt-12 grid gap-4 sm:grid-cols-3">
+            <div class="glass rounded-3xl p-5 shadow-soft">
+              <div class="text-2xl font-bold text-white">1000+</div>
+              <div class="mt-1 text-sm text-slate-400">Hospital database tables navigated in SIMRS logistics development</div>
+            </div>
+            <div class="glass rounded-3xl p-5 shadow-soft">
+              <div class="text-2xl font-bold text-white">150+</div>
+              <div class="mt-1 text-sm text-slate-400">Weekly business transactions tracked and monitored in operations</div>
+            </div>
+            <div class="glass rounded-3xl p-5 shadow-soft">
+              <div class="text-2xl font-bold text-white">26+</div>
+              <div class="mt-1 text-sm text-slate-400">Technology and digital systems certificates through MBKM and Coursera</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-reveal lg:justify-self-end">
+          <div class="glass relative overflow-hidden rounded-[2rem] p-6 shadow-glow sm:p-7">
+            <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/80 to-transparent"></div>
+            <div class="rounded-[1.5rem] border border-white/10 bg-slate-950/60 p-5">
+              <div class="flex items-center justify-between gap-4">
+                <div>
+                  <p class="text-xs uppercase tracking-[0.26em] text-slate-500">System Profile</p>
+                  <h2 class="mt-2 text-xl font-semibold text-white">Engineering Snapshot</h2>
+                </div>
+                <div class="flex gap-2">
+                  <span class="h-3 w-3 rounded-full bg-cyan-300"></span>
+                  <span class="h-3 w-3 rounded-full bg-blue-400"></span>
+                  <span class="h-3 w-3 rounded-full bg-slate-500"></span>
+                </div>
+              </div>
+
+              <div class="mt-6 space-y-4">
+                <div class="rounded-2xl border border-white/6 bg-white/5 p-4">
+                  <div class="flex items-center justify-between gap-4">
+                    <span class="text-sm font-medium text-slate-300">Primary Strength</span>
+                    <span class="rounded-full bg-cyan-400/10 px-3 py-1 text-xs font-semibold text-cyan-300">System Thinking</span>
+                  </div>
+                  <p class="mt-2 text-sm leading-7 text-slate-400">Requirement translation, workflow structuring, database-oriented implementation, and backend support for real operational use cases.</p>
+                </div>
+                <div class="grid gap-4 sm:grid-cols-2">
+                  <div class="rounded-2xl border border-white/6 bg-white/5 p-4">
+                    <p class="text-xs uppercase tracking-[0.24em] text-slate-500">Focus</p>
+                    <p class="mt-2 text-sm font-medium text-white">Backend, Data Flow, Business Logic</p>
+                  </div>
+                  <div class="rounded-2xl border border-white/6 bg-white/5 p-4">
+                    <p class="text-xs uppercase tracking-[0.24em] text-slate-500">Domain Exposure</p>
+                    <p class="mt-2 text-sm font-medium text-white">Hospital, Government, Campus, Business</p>
+                  </div>
+                </div>
+                <div class="rounded-2xl border border-cyan-400/16 bg-cyan-400/6 p-4">
+                  <div class="flex items-start gap-3">
+                    <div class="mt-1 h-2.5 w-2.5 rounded-full bg-cyan-300"></div>
+                    <div>
+                      <p class="text-sm font-semibold text-white">Current Positioning</p>
+                      <p class="mt-1 text-sm leading-7 text-slate-300">Junior system engineer / backend-focused developer with solid business understanding and hands-on experience building structured digital workflows.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section-reveal mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+      <div class="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.24em] text-cyan-300">About</p>
+          <h2 class="mt-4 text-3xl font-bold text-white sm:text-4xl">A system-minded developer who starts from real operations, not from assumptions.</h2>
+        </div>
+        <div class="glass rounded-[2rem] p-7 shadow-soft">
+          <p class="text-base leading-8 text-slate-300">
+            Raihan is a final-year Information Systems student at Andalas University with practical experience across hospital systems, employee evaluation platforms, campus operations, and business management. He is strongest when mapping real workflows into structured digital logic, whether that means handling logistics flows in a SIMRS environment, supporting a multi-criteria evaluation system, organizing database-backed services, or improving operational transparency through better records and process design.
+          </p>
+          <div class="mt-6 grid gap-4 sm:grid-cols-2">
+            <div class="rounded-2xl border border-white/8 bg-white/5 p-4">
+              <p class="text-sm font-semibold text-white">What stands out</p>
+              <p class="mt-2 text-sm leading-7 text-slate-400">Strong balance between technical execution, workflow understanding, and business awareness.</p>
+            </div>
+            <div class="rounded-2xl border border-white/8 bg-white/5 p-4">
+              <p class="text-sm font-semibold text-white">What he enjoys building</p>
+              <p class="mt-2 text-sm leading-7 text-slate-400">Scalable digital systems with reliable data structures, clean process flow, and usable interfaces.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="stack" class="section-reveal mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+      <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.24em] text-cyan-300">Tech Stack</p>
+          <h2 class="mt-4 text-3xl font-bold text-white sm:text-4xl">Tools used to turn requirements into working systems</h2>
+        </div>
+        <p class="max-w-2xl text-sm leading-7 text-slate-400">Grouped around implementation layers to show how design, logic, and data come together in real projects.</p>
+      </div>
+
+      <div class="mt-10 grid gap-6 lg:grid-cols-4">
+        <div class="glass rounded-[1.75rem] p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan-400/20 hover:shadow-glow">
+          <div class="mb-5 flex items-center justify-between">
+            <h3 class="text-lg font-semibold text-white">Backend</h3>
+            <span class="rounded-full border border-cyan-400/15 bg-cyan-400/10 px-3 py-1 text-xs font-semibold text-cyan-300">Core</span>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <span class="tag-pill rounded-full px-3 py-2 text-sm text-slate-200 transition hover:-translate-y-0.5 hover:border-cyan-300/35 hover:text-white">Node.js</span>
+            <span class="tag-pill rounded-full px-3 py-2 text-sm text-slate-200 transition hover:-translate-y-0.5 hover:border-cyan-300/35 hover:text-white">Express.js</span>
+            <span class="tag-pill rounded-full px-3 py-2 text-sm text-slate-200 transition hover:-translate-y-0.5 hover:border-cyan-300/35 hover:text-white">REST API</span>
+            <span class="tag-pill rounded-full px-3 py-2 text-sm text-slate-200 transition hover:-translate-y-0.5 hover:border-cyan-300/35 hover:text-white">MVC Architecture</span>
+          </div>
+        </div>
+
+        <div class="glass rounded-[1.75rem] p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan-400/20 hover:shadow-glow">
+          <div class="mb-5 flex items-center justify-between">
+            <h3 class="text-lg font-semibold text-white">Database</h3>
+            <span class="rounded-full border border-cyan-400/15 bg-cyan-400/10 px-3 py-1 text-xs font-semibold text-cyan-300">Structure</span>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <span class="tag-pill rounded-full px-3 py-2 text-sm text-slate-200 transition hover:-translate-y-0.5 hover:border-cyan-300/35 hover:text-white">MySQL</span>
+            <span class="tag-pill rounded-full px-3 py-2 text-sm text-slate-200 transition hover:-translate-y-0.5 hover:border-cyan-300/35 hover:text-white">SQL Query Design</span>
+            <span class="tag-pill rounded-full px-3 py-2 text-sm text-slate-200 transition hover:-translate-y-0.5 hover:border-cyan-300/35 hover:text-white">Database Design</span>
+            <span class="tag-pill rounded-full px-3 py-2 text-sm text-slate-200 transition hover:-translate-y-0.5 hover:border-cyan-300/35 hover:text-white">Data Processing</span>
+          </div>
+        </div>
+
+        <div class="glass rounded-[1.75rem] p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan-400/20 hover:shadow-glow">
+          <div class="mb-5 flex items-center justify-between">
+            <h3 class="text-lg font-semibold text-white">Frontend</h3>
+            <span class="rounded-full border border-cyan-400/15 bg-cyan-400/10 px-3 py-1 text-xs font-semibold text-cyan-300">Interface</span>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <span class="tag-pill rounded-full px-3 py-2 text-sm text-slate-200 transition hover:-translate-y-0.5 hover:border-cyan-300/35 hover:text-white">JavaScript</span>
+            <span class="tag-pill rounded-full px-3 py-2 text-sm text-slate-200 transition hover:-translate-y-0.5 hover:border-cyan-300/35 hover:text-white">HTML</span>
+            <span class="tag-pill rounded-full px-3 py-2 text-sm text-slate-200 transition hover:-translate-y-0.5 hover:border-cyan-300/35 hover:text-white">Tailwind CSS</span>
+            <span class="tag-pill rounded-full px-3 py-2 text-sm text-slate-200 transition hover:-translate-y-0.5 hover:border-cyan-300/35 hover:text-white">UI/UX Design</span>
+          </div>
+        </div>
+
+        <div class="glass rounded-[1.75rem] p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan-400/20 hover:shadow-glow">
+          <div class="mb-5 flex items-center justify-between">
+            <h3 class="text-lg font-semibold text-white">Tools</h3>
+            <span class="rounded-full border border-cyan-400/15 bg-cyan-400/10 px-3 py-1 text-xs font-semibold text-cyan-300">Workflow</span>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <span class="tag-pill rounded-full px-3 py-2 text-sm text-slate-200 transition hover:-translate-y-0.5 hover:border-cyan-300/35 hover:text-white">Git</span>
+            <span class="tag-pill rounded-full px-3 py-2 text-sm text-slate-200 transition hover:-translate-y-0.5 hover:border-cyan-300/35 hover:text-white">GitHub</span>
+            <span class="tag-pill rounded-full px-3 py-2 text-sm text-slate-200 transition hover:-translate-y-0.5 hover:border-cyan-300/35 hover:text-white">Figma</span>
+            <span class="tag-pill rounded-full px-3 py-2 text-sm text-slate-200 transition hover:-translate-y-0.5 hover:border-cyan-300/35 hover:text-white">Canva</span>
+            <span class="tag-pill rounded-full px-3 py-2 text-sm text-slate-200 transition hover:-translate-y-0.5 hover:border-cyan-300/35 hover:text-white">Google Workspace</span>
+            <span class="tag-pill rounded-full px-3 py-2 text-sm text-slate-200 transition hover:-translate-y-0.5 hover:border-cyan-300/35 hover:text-white">Microsoft Office</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section-reveal mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+      <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.24em] text-cyan-300">Projects</p>
+          <h2 class="mt-4 text-3xl font-bold text-white sm:text-4xl">Selected work built around process clarity, data handling, and operational efficiency</h2>
+        </div>
+        <p class="max-w-2xl text-sm leading-7 text-slate-400">Click each project to open a deeper breakdown covering problem context, implementation focus, contribution, and the simplified system flow.</p>
+      </div>
+
+      <div class="mt-10 grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
+        <article class="project-card glass rounded-[1.8rem] p-6 transition duration-300 hover:-translate-y-1.5 hover:border-cyan-400/24 hover:shadow-glow">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="text-xs uppercase tracking-[0.24em] text-slate-500">Hospital System</p>
+              <h3 class="mt-2 text-xl font-semibold text-white">SIMRS Logistics Module</h3>
+            </div>
+            <span class="rounded-full border border-cyan-400/18 bg-cyan-400/8 px-3 py-1 text-xs font-semibold text-cyan-300">RS UNAND</span>
+          </div>
+          <p class="mt-4 text-sm leading-7 text-slate-400">Logistics-focused web module development inside a large-scale hospital information system with a highly complex database structure.</p>
+          <div class="mt-5 flex flex-wrap gap-2">
+            <span class="tag-pill rounded-full px-3 py-1.5 text-xs text-slate-300">Enterprise Workflow</span>
+            <span class="tag-pill rounded-full px-3 py-1.5 text-xs text-slate-300">Inventory Flow</span>
+            <span class="tag-pill rounded-full px-3 py-1.5 text-xs text-slate-300">Database-Oriented</span>
+          </div>
+          <button data-project="simrs" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-cyan-300 transition hover:text-cyan-200">
+            View Details <span class="project-arrow transition">→</span>
+          </button>
+        </article>
+
+        <article class="project-card glass rounded-[1.8rem] p-6 transition duration-300 hover:-translate-y-1.5 hover:border-cyan-400/24 hover:shadow-glow">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="text-xs uppercase tracking-[0.24em] text-slate-500">Government Platform</p>
+              <h3 class="mt-2 text-xl font-semibold text-white">E-Voisy Evaluation System</h3>
+            </div>
+            <span class="rounded-full border border-cyan-400/18 bg-cyan-400/8 px-3 py-1 text-xs font-semibold text-cyan-300">BPS Kota Padang</span>
+          </div>
+          <p class="mt-4 text-sm leading-7 text-slate-400">Web-based employee evaluation system with multi-criteria voting logic for centralized assessment management.</p>
+          <div class="mt-5 flex flex-wrap gap-2">
+            <span class="tag-pill rounded-full px-3 py-1.5 text-xs text-slate-300">Full Stack</span>
+            <span class="tag-pill rounded-full px-3 py-1.5 text-xs text-slate-300">Data Processing</span>
+            <span class="tag-pill rounded-full px-3 py-1.5 text-xs text-slate-300">Requirement Analysis</span>
+          </div>
+          <button data-project="evoisy" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-cyan-300 transition hover:text-cyan-200">
+            View Details <span class="project-arrow transition">→</span>
+          </button>
+        </article>
+
+        <article class="project-card glass rounded-[1.8rem] p-6 transition duration-300 hover:-translate-y-1.5 hover:border-cyan-400/24 hover:shadow-glow">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="text-xs uppercase tracking-[0.24em] text-slate-500">Business Monitoring</p>
+              <h3 class="mt-2 text-xl font-semibold text-white">SGrowth UMKM Platform</h3>
+            </div>
+            <span class="rounded-full border border-cyan-400/18 bg-cyan-400/8 px-3 py-1 text-xs font-semibold text-cyan-300">AI &amp; IoT</span>
+          </div>
+          <p class="mt-4 text-sm leading-7 text-slate-400">Monitoring and evaluation platform combining AI concepts, IoT-related data, and digital reporting workflows for UMKM use cases.</p>
+          <div class="mt-5 flex flex-wrap gap-2">
+            <span class="tag-pill rounded-full px-3 py-1.5 text-xs text-slate-300">Reporting Workflow</span>
+            <span class="tag-pill rounded-full px-3 py-1.5 text-xs text-slate-300">Data Visualization</span>
+            <span class="tag-pill rounded-full px-3 py-1.5 text-xs text-slate-300">Cross-disciplinary</span>
+          </div>
+          <button data-project="sgrowth" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-cyan-300 transition hover:text-cyan-200">
+            View Details <span class="project-arrow transition">→</span>
+          </button>
+        </article>
+
+        <article class="project-card glass rounded-[1.8rem] p-6 transition duration-300 hover:-translate-y-1.5 hover:border-cyan-400/24 hover:shadow-glow">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="text-xs uppercase tracking-[0.24em] text-slate-500">Campus Operations</p>
+              <h3 class="mt-2 text-xl font-semibold text-white">FTI CampusHub</h3>
+            </div>
+            <span class="rounded-full border border-cyan-400/18 bg-cyan-400/8 px-3 py-1 text-xs font-semibold text-cyan-300">Volunteer Platform</span>
+          </div>
+          <p class="mt-4 text-sm leading-7 text-slate-400">Activity registration and volunteer coordination platform built to streamline participant data and operational flow.</p>
+          <div class="mt-5 flex flex-wrap gap-2">
+            <span class="tag-pill rounded-full px-3 py-1.5 text-xs text-slate-300">Frontend–Backend Integration</span>
+            <span class="tag-pill rounded-full px-3 py-1.5 text-xs text-slate-300">Use Case Design</span>
+            <span class="tag-pill rounded-full px-3 py-1.5 text-xs text-slate-300">Process Flow</span>
+          </div>
+          <button data-project="campushub" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-cyan-300 transition hover:text-cyan-200">
+            View Details <span class="project-arrow transition">→</span>
+          </button>
+        </article>
+
+        <article class="project-card glass rounded-[1.8rem] p-6 transition duration-300 hover:-translate-y-1.5 hover:border-cyan-400/24 hover:shadow-glow lg:col-span-2 xl:col-span-1">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="text-xs uppercase tracking-[0.24em] text-slate-500">Library System</p>
+              <h3 class="mt-2 text-xl font-semibold text-white">Ruang Baca FTI</h3>
+            </div>
+            <span class="rounded-full border border-cyan-400/18 bg-cyan-400/8 px-3 py-1 text-xs font-semibold text-cyan-300">Fullstack</span>
+          </div>
+          <p class="mt-4 text-sm leading-7 text-slate-400">Web-based library management system covering book collection handling, borrowing workflows, and digital resource tracking.</p>
+          <div class="mt-5 flex flex-wrap gap-2">
+            <span class="tag-pill rounded-full px-3 py-1.5 text-xs text-slate-300">Express.js</span>
+            <span class="tag-pill rounded-full px-3 py-1.5 text-xs text-slate-300">MySQL</span>
+            <span class="tag-pill rounded-full px-3 py-1.5 text-xs text-slate-300">Tailwind CSS</span>
+          </div>
+          <button data-project="ruangbaca" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-cyan-300 transition hover:text-cyan-200">
+            View Details <span class="project-arrow transition">→</span>
+          </button>
+        </article>
+      </div>
+    </section>
+
+    <section id="thinking" class="section-reveal mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+      <div class="glass rounded-[2rem] p-8 shadow-soft sm:p-10">
+        <div class="max-w-3xl">
+          <p class="text-sm font-semibold uppercase tracking-[0.24em] text-cyan-300">System Thinking</p>
+          <h2 class="mt-4 text-3xl font-bold text-white sm:text-4xl">How Raihan approaches system building</h2>
+          <p class="mt-4 text-base leading-8 text-slate-400">This section represents the working pattern reflected across his CV: starting from operational understanding, then moving into structured digital execution.</p>
+        </div>
+
+        <div class="mt-10 grid gap-6 lg:grid-cols-5">
+          <div class="relative rounded-3xl border border-white/8 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-cyan-400/25">
+            <div class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-cyan-400/10 text-cyan-300">1</div>
+            <h3 class="text-lg font-semibold text-white">Business Understanding</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-400">Observe the real workflow, user pain points, and operational dependency between units or stakeholders.</p>
+          </div>
+          <div class="relative rounded-3xl border border-white/8 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-cyan-400/25">
+            <div class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-cyan-400/10 text-cyan-300">2</div>
+            <h3 class="text-lg font-semibold text-white">Requirement Analysis</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-400">Translate operational rules, evaluation logic, or data needs into structured requirements and system scope.</p>
+          </div>
+          <div class="relative rounded-3xl border border-white/8 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-cyan-400/25">
+            <div class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-cyan-400/10 text-cyan-300">3</div>
+            <h3 class="text-lg font-semibold text-white">System Design</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-400">Map process flow, define data structure, and decide how the interface should support operational clarity.</p>
+          </div>
+          <div class="relative rounded-3xl border border-white/8 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-cyan-400/25">
+            <div class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-cyan-400/10 text-cyan-300">4</div>
+            <h3 class="text-lg font-semibold text-white">Development</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-400">Implement the flow using backend logic, database design, frontend integration, and clear record management.</p>
+          </div>
+          <div class="relative rounded-3xl border border-white/8 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-cyan-400/25">
+            <div class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-cyan-400/10 text-cyan-300">5</div>
+            <h3 class="text-lg font-semibold text-white">Optimization</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-400">Refine data reliability, workflow speed, and usability so the system stays relevant to actual operations.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="section-reveal mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+      <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.24em] text-cyan-300">Experience Timeline</p>
+          <h2 class="mt-4 text-3xl font-bold text-white sm:text-4xl">Professional and organizational exposure that shaped his systems perspective</h2>
+        </div>
+      </div>
+
+      <div class="relative mt-12">
+        <div class="timeline-line absolute left-4 top-0 h-full w-px sm:left-1/2 sm:-translate-x-1/2"></div>
+
+        <div class="space-y-8">
+          <div class="relative grid gap-6 sm:grid-cols-2 sm:items-start">
+            <div class="sm:pr-10">
+              <div class="glass ml-10 rounded-[1.7rem] p-6 shadow-soft sm:ml-0">
+                <p class="text-xs uppercase tracking-[0.24em] text-slate-500">Nov 2025 - Present</p>
+                <h3 class="mt-2 text-xl font-semibold text-white">RS UNAND</h3>
+                <p class="mt-1 text-sm font-medium text-cyan-300">Information Systems Management Intern - Logistics System Development</p>
+                <ul class="mt-4 space-y-3 text-sm leading-7 text-slate-400">
+                  <li>Developed a logistics web module inside the SIMRS environment used across multiple hospital units.</li>
+                  <li>Worked within a complex enterprise database structure of 1000+ tables for inventory and inter-unit logistics workflows.</li>
+                  <li>Handled development independently by translating department operational needs into digital system features.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="sm:pl-10"></div>
+            <div class="absolute left-4 top-8 h-4 w-4 -translate-x-1/2 rounded-full border-4 border-slate-950 bg-cyan-300 sm:left-1/2"></div>
+          </div>
+
+          <div class="relative grid gap-6 sm:grid-cols-2 sm:items-start">
+            <div class="sm:pr-10"></div>
+            <div class="sm:pl-10">
+              <div class="glass ml-10 rounded-[1.7rem] p-6 shadow-soft sm:ml-0">
+                <p class="text-xs uppercase tracking-[0.24em] text-slate-500">Apr 2025 - Nov 2025</p>
+                <h3 class="mt-2 text-xl font-semibold text-white">Kopiler</h3>
+                <p class="mt-1 text-sm font-medium text-cyan-300">Operational Manager</p>
+                <ul class="mt-4 space-y-3 text-sm leading-7 text-slate-400">
+                  <li>Managed daily operations for a 10-member team, including financial tracking, inventory monitoring, and restocking analysis.</li>
+                  <li>Maintained structured records for roughly 150+ weekly transactions across sales, expenses, and partnerships.</li>
+                  <li>Supported data-driven decisions through continuous visibility into operational performance and resource usage.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="absolute left-4 top-8 h-4 w-4 -translate-x-1/2 rounded-full border-4 border-slate-950 bg-cyan-300 sm:left-1/2"></div>
+          </div>
+
+          <div class="relative grid gap-6 sm:grid-cols-2 sm:items-start">
+            <div class="sm:pr-10">
+              <div class="glass ml-10 rounded-[1.7rem] p-6 shadow-soft sm:ml-0">
+                <p class="text-xs uppercase tracking-[0.24em] text-slate-500">Jan 2025 - Feb 2025</p>
+                <h3 class="mt-2 text-xl font-semibold text-white">BPS Kota Padang</h3>
+                <p class="mt-1 text-sm font-medium text-cyan-300">Project Management &amp; Full Stack Development - E-Voisy System</p>
+                <ul class="mt-4 space-y-3 text-sm leading-7 text-slate-400">
+                  <li>Contributed to a web-based employee evaluation platform used by approximately 40+ staff members.</li>
+                  <li>Implemented multi-criteria voting logic with 4 evaluation methods and 21+ assessment criteria per employee.</li>
+                  <li>Connected requirement discussions with practical frontend and backend implementation for centralized evaluation management.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="sm:pl-10"></div>
+            <div class="absolute left-4 top-8 h-4 w-4 -translate-x-1/2 rounded-full border-4 border-slate-950 bg-cyan-300 sm:left-1/2"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="achievements" class="section-reveal mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+      <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.24em] text-cyan-300">Achievements</p>
+          <h2 class="mt-4 text-3xl font-bold text-white sm:text-4xl">Signals of competitive problem solving and innovation</h2>
+        </div>
+      </div>
+      <div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        <div class="glass rounded-[1.7rem] p-6 transition hover:-translate-y-1 hover:border-cyan-400/22 hover:shadow-glow">
+          <p class="text-sm font-semibold text-cyan-300">2nd Winner</p>
+          <h3 class="mt-3 text-lg font-semibold text-white">2nd World Health Competition for Innovative Product</h3>
+          <p class="mt-2 text-sm text-slate-400">2025</p>
+        </div>
+        <div class="glass rounded-[1.7rem] p-6 transition hover:-translate-y-1 hover:border-cyan-400/22 hover:shadow-glow">
+          <p class="text-sm font-semibold text-cyan-300">Gold Medal</p>
+          <h3 class="mt-3 text-lg font-semibold text-white">FIMiEx 2025 Innovation Exhibition</h3>
+          <p class="mt-2 text-sm text-slate-400">2025</p>
+        </div>
+        <div class="glass rounded-[1.7rem] p-6 transition hover:-translate-y-1 hover:border-cyan-400/22 hover:shadow-glow">
+          <p class="text-sm font-semibold text-cyan-300">2nd Winner</p>
+          <h3 class="mt-3 text-lg font-semibold text-white">Hackathon Neotelemetri Universitas Andalas</h3>
+          <p class="mt-2 text-sm text-slate-400">2025</p>
+        </div>
+        <div class="glass rounded-[1.7rem] p-6 transition hover:-translate-y-1 hover:border-cyan-400/22 hover:shadow-glow">
+          <p class="text-sm font-semibold text-cyan-300">Silver Medal</p>
+          <h3 class="mt-3 text-lg font-semibold text-white">World Invention Competition and Exhibition (WICE)</h3>
+          <p class="mt-2 text-sm text-slate-400">2025</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section-reveal mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+      <div class="glass overflow-hidden rounded-[2rem] shadow-glow">
+        <div class="grid gap-8 p-8 sm:p-10 lg:grid-cols-[1fr_0.92fr] lg:items-center">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.24em] text-cyan-300">Contact</p>
+            <h2 class="mt-4 text-3xl font-bold text-white sm:text-4xl">Interested in building efficient and scalable systems together?</h2>
+            <p class="mt-4 max-w-2xl text-base leading-8 text-slate-400">Raihan is open to opportunities where structured thinking, backend development, and business-aware system design can create measurable operational value.</p>
+          </div>
+          <div class="rounded-[1.7rem] border border-white/8 bg-slate-950/45 p-6">
+            <div class="space-y-5">
+              <div>
+                <p class="text-xs uppercase tracking-[0.24em] text-slate-500">Email</p>
+                <a href="mailto:alghifari2096@gmail.com" class="mt-2 inline-block text-lg font-semibold text-white transition hover:text-cyan-300">alghifari2096@gmail.com</a>
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-[0.24em] text-slate-500">Phone</p>
+                <a href="https://wa.me/06281298076037" class="mt-2 inline-block text-lg font-semibold text-white transition hover:text-cyan-300">0812-9807-6037</a>
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-[0.24em] text-slate-500">Location</p>
+                <p class="mt-2 text-lg font-semibold text-white">Padang, West Sumatra, Indonesia</p>
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-[0.24em] text-slate-500">LinkedIn</p>
+                <p class="mt-2 text-lg font-semibold text-white">LinkedIn profile available on CV</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/6 px-4 py-8 text-center text-sm text-slate-500 sm:px-6 lg:px-8">
+    Crafted as a premium portfolio experience with system thinking, technical clarity, and polished UI details.
+  </footer>
+
+  <div id="projectModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/78 px-4 opacity-0 pointer-events-none transition duration-300">
+    <div id="projectModalCard" class="glass max-h-[88vh] w-full max-w-5xl overflow-hidden rounded-[2rem] border border-white/10 opacity-0 shadow-glow transition duration-300" style="transform: translateY(24px) scale(.98);">
+      <div class="flex items-center justify-between border-b border-white/8 px-6 py-4 sm:px-8">
+        <div>
+          <p class="text-xs uppercase tracking-[0.22em] text-slate-500">Project Detail</p>
+          <h3 id="modalTitle" class="mt-1 text-xl font-semibold text-white"></h3>
+        </div>
+        <button id="closeModal" class="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-slate-200 transition hover:border-cyan-400/20 hover:text-white" aria-label="Close modal">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+      </div>
+      <div class="max-h-[calc(88vh-84px)] overflow-y-auto px-6 py-6 sm:px-8 sm:py-8">
+        <div class="grid gap-8 lg:grid-cols-[1.06fr_0.94fr]">
+          <div>
+            <div class="flex flex-wrap gap-2" id="modalTags"></div>
+            <div class="mt-6 grid gap-5">
+              <div class="rounded-[1.5rem] border border-white/8 bg-white/5 p-5">
+                <p class="text-xs uppercase tracking-[0.22em] text-slate-500">Problem</p>
+                <p id="modalProblem" class="mt-3 text-sm leading-7 text-slate-300"></p>
+              </div>
+              <div class="rounded-[1.5rem] border border-white/8 bg-white/5 p-5">
+                <p class="text-xs uppercase tracking-[0.22em] text-slate-500">Solution</p>
+                <p id="modalSolution" class="mt-3 text-sm leading-7 text-slate-300"></p>
+              </div>
+              <div class="rounded-[1.5rem] border border-white/8 bg-white/5 p-5">
+                <p class="text-xs uppercase tracking-[0.22em] text-slate-500">Technical Implementation</p>
+                <p id="modalImplementation" class="mt-3 text-sm leading-7 text-slate-300"></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-5">
+            <div class="rounded-[1.5rem] border border-cyan-400/16 bg-cyan-400/6 p-5">
+              <p class="text-xs uppercase tracking-[0.22em] text-slate-500">Key Contributions</p>
+              <ul id="modalContributions" class="mt-3 space-y-3 text-sm leading-7 text-slate-300"></ul>
+            </div>
+            <div class="rounded-[1.5rem] border border-white/8 bg-white/5 p-5">
+              <p class="text-xs uppercase tracking-[0.22em] text-slate-500">Impact</p>
+              <p id="modalImpact" class="mt-3 text-sm leading-7 text-slate-300"></p>
+            </div>
+            <div class="rounded-[1.5rem] border border-white/8 bg-slate-950/40 p-5">
+              <p class="text-xs uppercase tracking-[0.22em] text-slate-500">Simple System Flow</p>
+              <div id="modalFlow" class="mt-4 grid gap-3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const typingWords = [
+      'enterprise workflows',
+      'backend logic',
+      'structured databases',
+      'operational systems',
+      'digital process clarity'
+    ];
+
+    const projects = {
+      simrs: {
+        title: 'SIMRS Logistics Module',
+        tags: ['Hospital System', 'Enterprise Workflow', 'Inventory Process'],
+        problem: 'Hospital logistics requests and distribution processes require structured digital handling across multiple units, while the surrounding SIMRS environment already operates on a large and complex database structure.',
+        solution: 'Raihan developed a logistics-focused web module to support inventory tracking and inter-unit workflow handling, translating hospital operational needs into structured system features.',
+        implementation: 'The work centered on understanding logistics flow inside an enterprise hospital environment, navigating a database structure with 1000+ tables, and building module logic that supports organized request and distribution handling.',
+        contributions: [
+          'Independently handled logistics module development in the SIMRS environment.',
+          'Mapped operational needs from multiple departments into usable digital features.',
+          'Supported data organization for logistics requests and distribution processes.'
+        ],
+        impact: 'Helped improve workflow clarity and data organization in hospital logistics operations while working inside a highly complex enterprise system context.',
+        flow: ['Department Request', 'Logistics Module Process', 'SIMRS Database Structure', 'Organized Distribution Output']
+      },
+      evoisy: {
+        title: 'E-Voisy Evaluation System',
+        tags: ['Government', 'Full Stack', 'Decision Flow'],
+        problem: 'Employee evaluation at BPS Kota Padang needed a centralized digital process capable of handling multiple criteria, multiple evaluation methods, and consistent assessment flow for staff.',
+        solution: 'Raihan contributed to a web-based evaluation platform that digitized employee assessment workflows and supported structured evaluation management for approximately 40+ staff members.',
+        implementation: 'He participated in requirement discussions, translated evaluation logic into structured workflow, and developed both frontend and backend functionality for data processing and centralized management. The system supports 4 evaluation methods and 21+ criteria per employee.',
+        contributions: [
+          'Contributed to requirement discussion and workflow translation.',
+          'Implemented frontend and backend features for evaluation processing.',
+          'Supported centralized management of multi-criteria employee evaluation.'
+        ],
+        impact: 'Made the evaluation process more structured, centralized, and easier to manage through a web-based system.',
+        flow: ['Assessment Input', 'Voting & Criteria Processing', 'Centralized Data Storage', 'Evaluation Result Management']
+      },
+      sgrowth: {
+        title: 'SGrowth UMKM Platform',
+        tags: ['AI Concept', 'IoT Data', 'Digital Reporting'],
+        problem: 'UMKM monitoring and evaluation workflows often require better reporting structure, clearer digital records, and more useful visibility into field data and operational information.',
+        solution: 'Raihan contributed to a technology-driven platform that combines AI concepts, IoT-related data, and digital reporting workflows to support monitoring and evaluation.',
+        implementation: 'His role focused on translating business reporting needs into system features, especially around data visualization and structured record handling, while collaborating across technology and business perspectives.',
+        contributions: [
+          'Contributed to business-to-system feature translation.',
+          'Supported data visualization and structured reporting concepts.',
+          'Worked in cross-disciplinary collaboration between technical and business analysis.'
+        ],
+        impact: 'Strengthened the structure of UMKM monitoring workflows by helping turn reporting needs into clearer digital system components.',
+        flow: ['Operational Data / IoT Input', 'Processing & Reporting Logic', 'Structured Digital Records', 'Monitoring & Evaluation View']
+      },
+      campushub: {
+        title: 'FTI CampusHub',
+        tags: ['Campus Platform', 'Volunteer Management', 'Architecture'],
+        problem: 'Campus activities and volunteer coordination need a cleaner registration process and better participant data management to reduce friction during operations.',
+        solution: 'Raihan helped build a web platform for campus activity registration and volunteer coordination, focusing on smoother participant data flow and integrated operations.',
+        implementation: 'He worked on frontend-backend integration, interface design, and application architecture support, including use case and process flow design.',
+        contributions: [
+          'Developed features for participant registration and coordination flow.',
+          'Implemented frontend-backend integration for data management.',
+          'Contributed to interface design and process-oriented application architecture.'
+        ],
+        impact: 'Improved the structure of participant data handling and operational coordination inside campus activity workflows.',
+        flow: ['Participant Registration', 'System Validation & Coordination Logic', 'Participant Data Handling', 'Activity & Volunteer Management']
+      },
+      ruangbaca: {
+        title: 'Ruang Baca FTI',
+        tags: ['Fullstack', 'Express.js', 'MySQL'],
+        problem: 'Library operations require a system that can handle book records, borrowing workflows, and digital resource tracking more efficiently than manual or fragmented processes.',
+        solution: 'Raihan developed a fullstack web-based library management system covering collections, borrowing flow, and resource tracking.',
+        implementation: 'He designed the database structure, implemented backend services using Express.js and MySQL, and built responsive interfaces using Tailwind CSS to improve usability.',
+        contributions: [
+          'Designed database structures for library-related workflows.',
+          'Implemented backend services with Express.js and MySQL.',
+          'Built responsive frontend views focused on usability and efficiency.'
+        ],
+        impact: 'Created a more organized and usable workflow for library data management and borrowing operations.',
+        flow: ['Book / User Input', 'Borrowing & Resource Logic', 'MySQL Database', 'Library Tracking Output']
+      }
+    };
+
+    const typingTarget = document.getElementById('typingText');
+    let wordIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    function typeLoop() {
+      const currentWord = typingWords[wordIndex];
+      typingTarget.textContent = currentWord.slice(0, charIndex);
+
+      if (!deleting) {
+        charIndex++;
+        if (charIndex > currentWord.length) {
+          deleting = true;
+          setTimeout(typeLoop, 1200);
+          return;
+        }
+      } else {
+        charIndex--;
+        if (charIndex < 0) {
+          deleting = false;
+          wordIndex = (wordIndex + 1) % typingWords.length;
+          charIndex = 0;
+        }
+      }
+      setTimeout(typeLoop, deleting ? 45 : 85);
+    }
+    typeLoop();
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.16 });
+
+    document.querySelectorAll('.section-reveal').forEach((section, index) => {
+      if (index !== 0) sectionObserver.observe(section);
+    });
+
+    const sections = [...document.querySelectorAll('section[id]')];
+    const navLinks = [...document.querySelectorAll('.nav-link')];
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach((link) => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+          });
+        }
+      });
+    }, { threshold: 0.42 });
+    sections.forEach((section) => navObserver.observe(section));
+
+    const modal = document.getElementById('projectModal');
+    const modalCard = document.getElementById('projectModalCard');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalTags = document.getElementById('modalTags');
+    const modalProblem = document.getElementById('modalProblem');
+    const modalSolution = document.getElementById('modalSolution');
+    const modalImplementation = document.getElementById('modalImplementation');
+    const modalContributions = document.getElementById('modalContributions');
+    const modalImpact = document.getElementById('modalImpact');
+    const modalFlow = document.getElementById('modalFlow');
+
+    function openProject(projectKey) {
+      const project = projects[projectKey];
+      if (!project) return;
+      modalTitle.textContent = project.title;
+      modalProblem.textContent = project.problem;
+      modalSolution.textContent = project.solution;
+      modalImplementation.textContent = project.implementation;
+      modalImpact.textContent = project.impact;
+
+      modalTags.innerHTML = project.tags.map((tag) => `
+        <span class="rounded-full border border-cyan-400/16 bg-cyan-400/10 px-3 py-1.5 text-xs font-semibold text-cyan-300">${tag}</span>
+      `).join('');
+
+      modalContributions.innerHTML = project.contributions.map((item) => `
+        <li class="flex items-start gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-cyan-300"></span><span>${item}</span></li>
+      `).join('');
+
+      modalFlow.innerHTML = project.flow.map((item, index) => `
+        <div class="rounded-2xl border border-white/8 bg-white/5 p-4 text-sm font-medium text-slate-200 ${index < project.flow.length - 1 ? 'after:block' : ''}">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-cyan-400/10 text-xs font-bold text-cyan-300">${index + 1}</span>
+            <span>${item}</span>
+          </div>
+          ${index < project.flow.length - 1 ? '<div class="ml-4 mt-3 h-6 w-px bg-cyan-300/35"></div>' : ''}
+        </div>
+      `).join('');
+
+      modal.classList.add('modal-visible');
+      modalCard.classList.add('modal-card-visible');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeProject() {
+      modal.classList.remove('modal-visible');
+      modalCard.classList.remove('modal-card-visible');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('[data-project]').forEach((button) => {
+      button.addEventListener('click', () => openProject(button.dataset.project));
+    });
+
+    document.getElementById('closeModal').addEventListener('click', closeProject);
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) closeProject();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeProject();
+    });
+
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileToggle.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    mobileMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+
+    const glowOne = document.getElementById('parallaxGlowOne');
+    const glowTwo = document.getElementById('parallaxGlowTwo');
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      glowOne.style.transform = `translate3d(${y * 0.02}px, ${y * 0.08}px, 0)`;
+      glowTwo.style.transform = `translate3d(-${y * 0.03}px, ${y * 0.05}px, 0)`;
+    }, { passive: true });
+  </script>
+</body>
+</html>
